@@ -4,6 +4,7 @@ import filmCard from '../templates/templateMain.hbs';
 import refs from '../js/refs';
 
 import templateItem from '../templates/templateItem.hbs';
+import templateMainQuery from '../templates/templateMainQuery.hbs';
 
 const API_KEY = 'bb0a149304db2d054e912403b986db46';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -85,6 +86,9 @@ export default class {
   }
 
   findSpecificMovie(e) {
+  refs.inputHeader.classList.add('is-hidden');
+  refs.header.classList.remove('site-home');
+  refs.header.classList.add('site-film');
   const id = +e.target.id;
   console.log(id);
 
@@ -94,18 +98,40 @@ export default class {
       console.log(data),
       refs.main.innerHTML = `${templateItem(data)}`;
     })
+
     return;
   }
   
   else {
     console.log('нехуй клацать');
   }
+  }
+
+  findMovieQuery(query) {
+
+    if (query !== '') {
+      const moviesQuery = axios.get(`/search/movie?api_key=${API_KEY}&query=${query}`);
+
+      moviesQuery.then(({data}) => {
+        console.log(data),
+        refs.list.innerHTML = `${templateMainQuery(data.results)}`
   
+      })
+      return;
+    }
+    this.findMovies();
   }
 
   updateMarkup(finalResults) {
     const cards = filmCard(finalResults);
 
     refs.list.insertAdjacentHTML('afterbegin', cards);
-  }
+  };
+
+  // btnAddToWatch() {
+  //   refs.btnWatch.addEventListener('click', () => {
+  //     console.log('test')
+  //   })
+  // }
+
 }
