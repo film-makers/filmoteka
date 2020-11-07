@@ -15,10 +15,6 @@
 //   margin: auto;
 // }
 .films__list{
-  // display: flex;
-  // justify-content: space-between;
-  // align-items: center;
-  // flex-wrap: wrap;
   display: grid;
   grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
   grid-gap: 30px;
