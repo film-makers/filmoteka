@@ -1,35 +1,25 @@
 import './sass/styles.scss';
-import axios from 'axios';
 import refs from './js/refs';
-import filmCard from './templates/film-card.hbs';
-import genres from './modules/genres';
+import PageChanger from './modules/pageChanger';
 
-const API_KEY = 'bb0a149304db2d054e912403b986db46';
+const pageChanger = new PageChanger();
 
-axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+pageChanger.findMovies();
+pageChanger.updateButtons();
 
-const movies = axios.get(`/trending/movies/week?api_key=${API_KEY}`);
+refs.arrowRight.addEventListener(
+  'click',
+  pageChanger.onArrowRightClick.bind(pageChanger),
+);
 
-movies.then(({ data: { results } }) => {
-  const mappedResults = results.map(item => ({
-    ...item,
-    first_air_date: item.first_air_date
-      ? item.first_air_date.slice(0, 4)
-      : 'No data',
-  }));
+refs.arrowLeft.addEventListener(
+  'click',
+  pageChanger.onArrowLeftClick.bind(pageChanger),
+);
 
-  const finalResults = mappedResults.map(item => ({
-    ...item,
-    genre_ids: item.genre_ids
-      .map(number => {
-        const genre = genres.find(genre => genre.id === number);
-
-        return genre?.name;
-      })
-      .join(', '),
-  }));
-
-  const cards = filmCard(finalResults);
-
-  refs.container.insertAdjacentHTML('beforeend', cards);
-});
+for (const pageButton in refs.pageButtons) {
+  refs.pageButtons[pageButton].addEventListener(
+    'click',
+    pageChanger.onPageButtonsClick.bind(pageChanger),
+  );
+}

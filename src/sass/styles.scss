@@ -1,1 +1,32 @@
 @import './base';
+
+.page-buttons {
+  width: 700px;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.current-page {
+  background-color: #ff6b08;
+  color: #fff;
+}
+
+.page-buttons > button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-buttons > button:not(:nth-child(5)) {
+  background-color: transparent;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+}
