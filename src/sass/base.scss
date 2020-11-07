@@ -1,33 +1,32 @@
 html {
-    box-sizing: border-box;
-  }
-  
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    font-family: 'Roboto', sans-serif;
-  
-    /*
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+
+  /*
      * CSS image reference example.
      */
-    background-image: url('../images/bg-pattern.png');
-  }
-  
-  .container {
-    max-width: 280px;
-    margin: 0 auto;
+}
 
-    @media (min-width: 768px) {
-      max-width: 617px;
-    }
+.container {
+  max-width: 280px;
+  margin: 0 auto;
 
-    @media (min-width: 1024px) {
-      max-width: 882px;
-    }
+  @media (min-width: 768px) {
+    max-width: 617px;
   }
+
+  @media (min-width: 1024px) {
+    max-width: 882px;
+  }
+}
