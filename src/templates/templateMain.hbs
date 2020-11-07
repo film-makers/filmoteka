@@ -1,5 +1,7 @@
+{{#each this}}
 <li class="films__item">
-    <img class="films__img" src="./images/Rectangle 5.jpg" alt="image">
-    <p class="films__title">Greyhound</p>
-    <p class="films__text">Drama,Action | 2020<span class="films__rating">8.0</span></p>
+    <img class="films__img" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="{{name}}">
+    <p class="films__title">{{name}}</p>
+    <p class="films__text">{{genre_ids}} | {{first_air_date}}<span class="films__rating">{{vote_average}}</span></p>
 </li>
+{{/each}}
