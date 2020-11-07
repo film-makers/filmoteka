@@ -53,11 +53,18 @@ export default class {
     refs.pageButtons.anPage.innerHTML = this.page + 2;
   }
 
+  setExtremeButtonsText(firstText, secondText) {
+    refs.pageButtons.firstPage.textContent = firstText;
+    refs.pageButtons.lastPage.textContent = secondText;
+  }
+
   findMovies() {
     const movies = axios.get(
       `/trending/movies/week?api_key=${this.key}&page=${this.page}`,
     );
-    movies.then(({ data }) => console.log(data));
+    movies.then(({ data }) => {
+      this.setExtremeButtonsText(1, data.total_pages);
+    });
 
     movies.then(({ data: { results } }) => {
       const mappedResults = results.map(item => ({
