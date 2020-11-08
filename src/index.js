@@ -34,7 +34,7 @@ for (const pageButton in refs.pageButtons) {
   );
 }
 
-refs.list.addEventListener('click', 
+refs.list.addEventListener('click',
   pageChanger.findSpecificMovie.bind(pageChanger),
 );
 
@@ -51,7 +51,9 @@ refs.siteLogo.addEventListener('click', () => {
 });
 
 refs.linkLibrary.addEventListener('click', () => {
+
   refs.header.classList.remove('site-home');
+  refs.header.classList.remove('site-film');
   refs.header.classList.add('site-myLibrary');
   refs.inputHeader.classList.add('is-hidden');
   refs.btnHeader.classList.remove('is-hidden');
@@ -59,6 +61,7 @@ refs.linkLibrary.addEventListener('click', () => {
 
 refs.linkHome.addEventListener('click', () => {
   refs.header.classList.add('site-home');
+  refs.header.classList.remove('site-film');
   refs.header.classList.remove('site-myLibrary');
   refs.inputHeader.classList.remove('is-hidden');
   refs.btnHeader.classList.add('is-hidden');

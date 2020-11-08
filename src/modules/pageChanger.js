@@ -1,8 +1,8 @@
 import axios from 'axios';
 import genres from '../modules/genres';
-import filmCard from '../templates/templateMain.hbs';
 import refs from '../js/refs';
 
+import filmCard from '../templates/templateMain.hbs';
 import templateItem from '../templates/templateItem.hbs';
 import templateMainQuery from '../templates/templateMainQuery.hbs';
 
@@ -101,7 +101,7 @@ export default class {
 
     return;
   }
-  
+
   else {
     console.log('нехуй клацать');
   }
@@ -115,7 +115,7 @@ export default class {
       moviesQuery.then(({data}) => {
         console.log(data),
         refs.list.innerHTML = `${templateMainQuery(data.results)}`
-  
+
       })
       return;
     }
