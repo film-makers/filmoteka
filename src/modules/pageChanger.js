@@ -1,12 +1,22 @@
 import axios from 'axios';
 import genres from '../modules/genres';
-import filmCard from '../templates/templateMain.hbs';
 import refs from '../js/refs';
+
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
+import { alert } from '@pnotify/core';
+
+import filmCard from '../templates/templateMain.hbs';
+
 import templateItem from '../templates/templateItem.hbs';
 import templateMainQuery from '../templates/templateMainQuery.hbs';
 
 const API_KEY = 'bb0a149304db2d054e912403b986db46';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
+
+// refs.spinner.classList.remove("is-hidden")
+// refs.spinner.classList.add("is-hidden");
+
 
 export default class {
   constructor() {
@@ -285,7 +295,9 @@ export default class {
     refs.pageButtons.lpButton.textContent = secondText;
   }
 
+
   findMovies() {
+    refs.spinner.classList.remove("is-hidden")
     let lastPage;
 
     const movies = axios.get(
@@ -319,40 +331,49 @@ export default class {
       }));
 
       this.updateMarkup(finalResults);
-    });
+    }).finally(() => refs.spinner.classList.add("is-hidden"))
 
     return lastPageFinder;
   }
 
   findSpecificMovie(e) {
-    refs.inputHeader.classList.add('is-hidden');
-    refs.header.classList.remove('site-home');
-    refs.header.classList.add('site-film');
-    const id = +e.target.id;
-    console.log(id);
+  refs.spinner.classList.remove("is-hidden")
+  refs.inputHeader.classList.add('is-hidden');
+  refs.header.classList.remove('site-home');
+  refs.header.classList.add('site-film');
+  const id = +e.target.id;
+  // console.log(id);
 
-    if (e.target.nodeName === 'IMG') {
-      const movies = axios.get(`/movie/${id}?api_key=${API_KEY}`);
-      movies.then(({ data }) => {
-        console.log(data), (refs.main.innerHTML = `${templateItem(data)}`);
-      });
-
-      return;
-    } else {
-      console.log('нехуй клацать');
-    }
+  if (e.target.nodeName === 'IMG') {
+    const movies = axios.get(`/movie/${id}?api_key=${API_KEY}`);
+    movies.then(({data}) => {
+      refs.main.innerHTML = `${templateItem(data)}`
+    }).catch(error => {
+    alert({
+      text: `Нет содержимого на бэкенде!`,
+      delay: 1000
+    })}).finally(() => refs.spinner.classList.add("is-hidden"))
+    return;
+  } else {
+    console.log('нехуй клацать');
+  }
   }
 
   findMovieQuery(query) {
     if (query !== '') {
-      const moviesQuery = axios.get(
-        `/search/movie?api_key=${API_KEY}&query=${query}`,
-      );
+      refs.spinner.classList.remove("is-hidden")
+      const moviesQuery = axios.get(`/search/movie?api_key=${API_KEY}&query=${query}`);
 
-      moviesQuery.then(({ data }) => {
-        console.log(data),
-          (refs.list.innerHTML = `${templateMainQuery(data.results)}`);
-      });
+      moviesQuery.then(({data}) => {
+        if(data.total_results !== 0) {
+          refs.list.innerHTML = `${templateMainQuery(data.results)}`
+          refs.errorInput.classList.add("is-hidden")
+        }
+        if(data.total_results === 0) {
+          refs.errorInput.classList.remove("is-hidden")
+          this.findMovies();
+        }
+      }).finally(() => refs.spinner.classList.add("is-hidden"))
       return;
     }
     this.findMovies();

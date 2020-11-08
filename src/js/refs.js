@@ -12,6 +12,10 @@ export default {
   inputHeader: document.querySelector('.input-header'),
   btnWatch: document.querySelector('.btn-watch'),
   btnQueue: document.querySelector('.btn-queue'),
+
+  errorInput: document.querySelector('.error-input'),
+  spinner: document.querySelector('.spinner'),
+
   arrowLeft: document.querySelector('.arrow-left'),
   pageButtons: {
     fpButton: document.querySelector('.first-page'),
