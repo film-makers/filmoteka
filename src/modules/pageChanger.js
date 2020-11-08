@@ -5,6 +5,7 @@ import refs from '../js/refs';
 
 import templateItem from '../templates/templateItem.hbs';
 import templateMainQuery from '../templates/templateMainQuery.hbs';
+import localStorage from '../js/localStorage';
 
 const API_KEY = 'bb0a149304db2d054e912403b986db46';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -90,13 +91,15 @@ export default class {
   refs.header.classList.remove('site-home');
   refs.header.classList.add('site-film');
   const id = +e.target.id;
-  console.log(id);
 
   if (e.target.nodeName === 'IMG') {
     const movies = axios.get(`/movie/${id}?api_key=${API_KEY}`);
+
+
     movies.then(({data}) => {
       console.log(data),
       refs.main.innerHTML = `${templateItem(data)}`;
+        localStorage.setToLocalStorage(data);
     })
 
     return;
@@ -128,10 +131,6 @@ export default class {
     refs.list.insertAdjacentHTML('afterbegin', cards);
   };
 
-  // btnAddToWatch() {
-  //   refs.btnWatch.addEventListener('click', () => {
-  //     console.log('test')
-  //   })
-  // }
+
 
 }
