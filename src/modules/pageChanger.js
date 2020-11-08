@@ -337,6 +337,17 @@ export default class {
     return lastPageFinder;
   }
 
+  findWatchedMovies(array) {
+    refs.spinner.classLirst.remove("is-hidden")
+    let lastPage;
+    
+      this.updateExtremeButtonsText(1, array.length);
+      this.maxPage = array.length / 20;
+      lastPage = this.maxPage;
+      return lastPage;
+    };
+  
+
   findSpecificMovie(e) {
     refs.inputHeader.classList.add('is-hidden');
     refs.header.classList.remove('site-home');
