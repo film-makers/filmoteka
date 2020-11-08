@@ -32,25 +32,26 @@ for (const pageButton in refs.pageButtons) {
   );
 }
 
-refs.list.addEventListener(
-  'click',
+refs.list.addEventListener('click',
   pageChanger.findSpecificMovie.bind(pageChanger),
 );
 
-refs.inputFinder.addEventListener(
-  'input',
-  debounce(e => {
-    let query = e.target.value;
-    console.log(e.target.value);
-    pageChanger.findMovieQuery(query);
-  }, 500),
-);
+refs.inputFinder.addEventListener('input', debounce((e) => {
+  let query = e.target.value;
+  console.log(e.target.value);
+  pageChanger.findMovieQuery(query);
+
+
+
+}, 500));
+
 
 refs.siteLogo.addEventListener('click', () => {
   window.location.reload();
 });
 
 refs.linkLibrary.addEventListener('click', () => {
+
   refs.header.classList.remove('site-home');
   refs.header.classList.remove('site-film');
   refs.header.classList.add('site-myLibrary');
