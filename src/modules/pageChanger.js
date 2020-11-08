@@ -342,15 +342,15 @@ export default class {
   }
 
   findSpecificMovie(e) {
-  refs.spinner.classList.remove("is-hidden")
-  refs.inputHeader.classList.add('is-hidden');
-  refs.header.classList.remove('site-home');
-  refs.header.classList.add('site-film');
-  const id = +e.target.id;
+    refs.inputHeader.classList.add('is-hidden');
+    refs.header.classList.remove('site-home');
+    refs.header.classList.add('site-film');
+    const id = +e.target.id;
 
 
 
-  if (e.target.nodeName === 'IMG') {
+    if (e.target.nodeName === 'IMG') {
+      refs.spinner.classList.remove("is-hidden")
     const movies = axios.get(`/movie/${id}?api_key=${API_KEY}`);
 
 

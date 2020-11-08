@@ -14,10 +14,10 @@ export default {
   btnQueue: document.querySelector('.btn-queue'),
   errorInput: document.querySelector('.error-input'),
   spinner: document.querySelector('.self-building-square-spinner'),
-
+  teamList: document.querySelector('.footer__link-a'),
   errorInput: document.querySelector('.error-input'),
   spinner: document.querySelector('.spinner'),
-
+  
   arrowLeft: document.querySelector('.arrow-left'),
   pageButtons: {
     fpButton: document.querySelector('.first-page'),

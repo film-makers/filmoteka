@@ -1,0 +1,20 @@
+
+.team__list{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.team__item{
+  list-style-type: none;
+
+}
+.team__img{
+  margin-right: 20px;
+  width: 280px;
+  height: 300px;
+}
+.team__name{
+  color: rgb(94, 33, 175);
+  font-size: 20px;
+  font-weight: 500;
+}

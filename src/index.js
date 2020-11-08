@@ -3,10 +3,11 @@ import refs from './js/refs';
 
 import filmCard from './templates/templateMain.hbs';
 import genres from './modules/genres';
-
+import teamdata from './js/team';
 import debounce from 'lodash.debounce';
 
 import PageChanger from './modules/pageChanger';
+import team from './templates/team.hbs'
 
 const pageChanger = new PageChanger();
 
@@ -40,7 +41,7 @@ refs.inputFinder.addEventListener('input', debounce((e) => {
   let query = e.target.value;
   console.log(e.target.value);
   pageChanger.findMovieQuery(query);
-  
+
 
 
 }, 500));
@@ -66,3 +67,10 @@ refs.linkHome.addEventListener('click', () => {
   refs.inputHeader.classList.remove('is-hidden');
   refs.btnHeader.classList.add('is-hidden');
 });
+
+refs.teamList.addEventListener('click', ()=>{
+  refs.list.innerHTML = `${team(teamdata)}`;
+  const f = document.querySelector('.page-buttons');
+  f.classList.add('is-hidden');
+  refs.inputHeader.classList.add('is-hidden');
+})
