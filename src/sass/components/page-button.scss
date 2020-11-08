@@ -1,33 +1,64 @@
-
 .page-buttons {
-    width: 700px;
-    display: flex;
-    margin: 0 auto;
-    justify-content: space-between;
+  display: flex;
+  margin: 0 auto;
+  justify-content: space-between;
+  max-width: 280px;
+
+  @media (min-width: 768px) {
+    max-width: 567px;
   }
-  
-  .current-page {
-    background-color: #ff6b08;
-    color: #fff;
+  @media (min-width: 1024px) {
+    max-width: 782px;
   }
-  
-  .page-buttons > button {
-    border: none;
-    width: 40px;
-    height: 40px;
-    border-radius: 5px;
-    cursor: pointer;
+}
+
+.current-page {
+  background-color: #ff6b08;
+  color: #fff;
+}
+
+.page-buttons > button {
+  border: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.page-buttons > button:not(:nth-child(6)):not(:nth-child(1)):not(:last-child) {
+  background-color: transparent;
+}
+
+.dots-left,
+.dots-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.dots-left,
+.dots-right,
+.first-page,
+.last-page {
+  @media (max-width: 768px) {
+    display: none;
   }
-  
-  .page-buttons > button:not(:nth-child(5)) {
-    background-color: transparent;
-  }
-  
-  .dots {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 8px;
-  }
-  
-  
+}
+
+.hidden {
+  display: none;
+}
+
+.next-page:active,
+.next-page:focus,
+.previous-page:active,
+.previous-page:focus {
+  outline: none;
+}
+
+.arrow-right,
+.arrow-left {
+  background: #cfcfcf;
+  border-radius: 5px;
+}
