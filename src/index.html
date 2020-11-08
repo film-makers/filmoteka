@@ -40,7 +40,7 @@
             </nav>
           </div>
           <div class="buttons-header is-hidden">
-            <button href="#registration-form" class="desktop-consultation">
+            <button href="#registration-form" class="desktop-consultation btn-clr-wathed">
               wathed
             </button>
             <button href="#registration-form" class="desktop-consultation">
@@ -54,20 +54,23 @@
               placeholder="Поиск фильмов"
             />
             <span class="error-input is-hidden">Search result not successful. Enter the correct movie name and</span>
-           </form>
+          </form>
         </div>
       </header>
-      <div class="self-building-square-spinner is-hidden">
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square clear"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square clear"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-      </div>
+<div class="is-hidden spinner">
+  <div class="intersecting-circles-spinner ">
+    <div class="spinnerBlock">
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+      <span class="circle"></span>
+    </div>
+  </div>
+</div>
+
     <main>
 
     <section class="films">
@@ -75,23 +78,25 @@
         <ul class="films__list">
 
         </ul>
-      </div>
-    </section>
-        <!-- Pagination -->
-    <div class="container"></div>
 
+        <!-- Pagination -->
     <div class="page-buttons">
-      <button class="arrow-left">>---</button>
-      <div class="dots">...</div>
+      <button class="arrow-left">&#9664;</button>
+      <button class="first-page"></button>
+      <div class="dots-left">...</div>
       <button class="before-previous-page"></button>
       <button class="previous-page"></button>
       <button class="current-page"></button>
       <button class="next-page"></button>
       <button class="after-next-page"></button>
-      <div class="dots">...</div>
-      <button class="arrow-right">---></button>
+      <div class="dots-right">...</div>
+      <button class="last-page"></button>
+      <button class="arrow-right">&#9654;</button>
     </div>
     <!-- End pagination -->
+      </div>
+    </section>
+
 
       </main>
 
@@ -104,4 +109,5 @@
         <a class="footer__link" href="#">GoIT Students</a>
       </div>
     </footer>
+  </body>
 </html>

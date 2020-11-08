@@ -1,83 +1,83 @@
-self-building-square-spinner,
-.self-building-square-spinner * {
-  box-sizing: border-box;
-}
 
-.self-building-square-spinner {
+.intersecting-circles-spinner,
+.intersecting-circles-spinner * {
+  box-sizing: border-box;
   position: fixed;
   top: 50%;
   left: 50%;
-  height: 40px;
-  width: 40px;
+  margin-right: -50%;
+  transform: translateX(-50%, -50%);
 }
 
-.self-building-square-spinner .square {
-  height: 10px;
-  width: 10px;
-  top: calc(-10px * 2 / 3);
-  margin-right: calc(10px / 3);
-  margin-top: calc(10px / 3);
-  background: #ff1d5e;
-  float: left;
+.intersecting-circles-spinner {
+  height: 70px;
+  width: 70px;
   position: relative;
-  opacity: 0;
-  animation: self-building-square-spinner 6s infinite;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.self-building-square-spinner .square:nth-child(1) {
-  animation-delay: calc(300ms * 6);
+.intersecting-circles-spinner .spinnerBlock {
+  animation: intersecting-circles-spinners-animation 1200ms linear infinite;
+  transform-origin: center;
+  display: block;
+  height: 35px;
+  width: 35px;
 }
 
-.self-building-square-spinner .square:nth-child(2) {
-  animation-delay: calc(300ms * 7);
+.intersecting-circles-spinner .circle {
+  display: block;
+  border: 2px solid #ff1d5e;
+  border-radius: 50%;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
-.self-building-square-spinner .square:nth-child(3) {
-  animation-delay: calc(300ms * 8);
+.intersecting-circles-spinner .circle:nth-child(1) {
+  left: 0;
+  top: 0;
 }
 
-.self-building-square-spinner .square:nth-child(4) {
-  animation-delay: calc(300ms * 3);
+.intersecting-circles-spinner .circle:nth-child(2) {
+  left: calc(35px * -0.36);
+  top: calc(35px * 0.2);
 }
 
-.self-building-square-spinner .square:nth-child(5) {
-  animation-delay: calc(300ms * 4);
+.intersecting-circles-spinner .circle:nth-child(3) {
+  left: calc(35px * -0.36);
+  top: calc(35px * -0.2);
 }
 
-.self-building-square-spinner .square:nth-child(6) {
-  animation-delay: calc(300ms * 5);
+.intersecting-circles-spinner .circle:nth-child(4) {
+  left: 0;
+  top: calc(35px * -0.36);
 }
 
-.self-building-square-spinner .square:nth-child(7) {
-  animation-delay: calc(300ms * 0);
+.intersecting-circles-spinner .circle:nth-child(5) {
+  left: calc(35px * 0.36);
+  top: calc(35px * -0.2);
 }
 
-.self-building-square-spinner .square:nth-child(8) {
-  animation-delay: calc(300ms * 1);
+.intersecting-circles-spinner .circle:nth-child(6) {
+  left: calc(35px * 0.36);
+  top: calc(35px * 0.2);
 }
 
-.self-building-square-spinner .square:nth-child(9) {
-  animation-delay: calc(300ms * 2);
+.intersecting-circles-spinner .circle:nth-child(7) {
+  left: 0;
+  top: calc(35px * 0.36);
 }
 
-.self-building-square-spinner .clear {
-  clear: both;
-}
-
-@keyframes self-building-square-spinner {
-  0% {
-    opacity: 0;
+@keyframes intersecting-circles-spinners-animation {
+  from {
+    transform: rotate(0deg);
   }
-  5% {
-    opacity: 1;
-    top: 0;
-  }
-  50.9% {
-    opacity: 1;
-    top: 0;
-  }
-  55.9% {
-    opacity: 0;
-    top: inherit;
+  to {
+    transform: rotate(360deg);
   }
 }
