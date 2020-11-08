@@ -1,0 +1,128 @@
+$main-color: #FF6B01;
+
+button {
+    cursor: pointer;
+}
+
+.main-item {
+    padding: 20px 0;
+    
+    @media (min-width: 768px) {
+        padding: 60px 0;
+    }
+}
+
+.cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: flex-start;
+    }
+}
+
+.cart__name {
+    width: 100%;
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin: 30px 0 20px;
+    
+    @media (min-width: 768px) {
+        margin: 0 0 20px;
+    }
+}
+
+@media (min-width: 768px) {
+    .cart-content {
+        margin-left: 30px;
+    }
+}
+
+.param {
+    width: 100%;
+}
+
+.param-name {
+    width: 30%;
+}
+
+.param__item {
+    list-style-type: none;
+    line-height: 16px;
+    padding: 5px 0;
+    width: 100%;
+    display: flex;
+}
+
+.param__item-name {
+    font-size: 12px;
+    color: #8c8c8c;
+    display: inline-block
+}
+
+.param__item-value {
+    margin-left: 40px;
+    font-size: 12px;
+}
+
+.param__item-value--orange {
+    background: $main-color;
+    color: #fff;
+    padding: 2px 7px;
+    border: 1px solid $main-color;
+    border-radius: 5px;
+}
+
+.param__item-value--grey {
+    background: #F7F7F7;
+    color: #000;
+    font-weight: 600;
+    padding: 2px 7px;
+    border: 1px solid #F7F7F7;
+    border-radius: 5px;
+}
+
+.cart-description {
+    margin-top: 20px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.cart-description h2 {
+    text-transform: uppercase;
+    margin-bottom: 10px;
+}
+
+.cart-buttons {
+    margin: 40px 0;
+}
+
+.btn {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 500;
+    padding: 14px 10px;
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #000;
+    transition: all.2s linear;
+
+    &:hover {
+        background: $main-color;
+        border: 1px solid $main-color;
+        color: #fff;
+    }
+}
+
+
+// .btn-queue {
+//     background: #fff;
+//     color: #000;
+//     border: 1px solid rgb(185, 185, 185);
+//     border-radius: 5px;
+// }
