@@ -4,18 +4,16 @@ import refs from './js/refs';
 import filmCard from './templates/templateMain.hbs';
 import genres from './modules/genres';
 
-import debounce from  'lodash.debounce';
+import debounce from 'lodash.debounce';
 
 import PageChanger from './modules/pageChanger';
 
-
 const pageChanger = new PageChanger();
 
-pageChanger.findMovies();
-pageChanger.updateButtons();
-
-
-
+pageChanger.findMovies().then(maxPage => {
+  console.log(maxPage);
+  pageChanger.updateButtons(maxPage);
+});
 
 refs.arrowRight.addEventListener(
   'click',
@@ -34,7 +32,7 @@ for (const pageButton in refs.pageButtons) {
   );
 }
 
-refs.list.addEventListener('click', 
+refs.list.addEventListener('click',
   pageChanger.findSpecificMovie.bind(pageChanger),
 );
 
@@ -44,19 +42,22 @@ refs.inputFinder.addEventListener('input', debounce((e) => {
   pageChanger.findMovieQuery(query);
 
 
+
 }, 500));
+
 
 refs.siteLogo.addEventListener('click', () => {
   window.location.reload();
 });
 
 refs.linkLibrary.addEventListener('click', () => {
+
   refs.header.classList.remove('site-home');
   refs.header.classList.remove('site-film');
   refs.header.classList.add('site-myLibrary');
   refs.inputHeader.classList.add('is-hidden');
   refs.btnHeader.classList.remove('is-hidden');
-})
+});
 
 refs.linkHome.addEventListener('click', () => {
   refs.header.classList.add('site-home');
@@ -64,5 +65,4 @@ refs.linkHome.addEventListener('click', () => {
   refs.header.classList.remove('site-myLibrary');
   refs.inputHeader.classList.remove('is-hidden');
   refs.btnHeader.classList.add('is-hidden');
-})
-
+});
