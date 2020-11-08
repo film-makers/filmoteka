@@ -1,20 +1,13 @@
 import './sass/styles.scss';
 import refs from './js/refs';
-
-import filmCard from './templates/templateMain.hbs';
-import genres from './modules/genres';
-
-
 import PageChanger from './modules/pageChanger';
-
 
 const pageChanger = new PageChanger();
 
-pageChanger.findMovies();
-pageChanger.updateButtons();
-
-
-
+pageChanger.findMovies().then(maxPage => {
+  console.log(maxPage);
+  pageChanger.updateButtons(maxPage);
+});
 
 refs.arrowRight.addEventListener(
   'click',
@@ -33,6 +26,7 @@ for (const pageButton in refs.pageButtons) {
   );
 }
 
-refs.list.addEventListener('click', 
-  pageChanger.findSpecificMovie.bind(pageChanger)
-)
+refs.list.addEventListener(
+  'click',
+  pageChanger.findSpecificMovie.bind(pageChanger),
+);
