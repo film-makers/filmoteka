@@ -44,6 +44,7 @@ refs.inputFinder.addEventListener('input', debounce((e) => {
   pageChanger.findMovieQuery(query);
 
 
+
 }, 500));
 
 refs.siteLogo.addEventListener('click', () => {
