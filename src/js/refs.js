@@ -13,6 +13,7 @@ export default {
   inputHeader: document.querySelector('.input-header'),
   btnWatch: document.querySelector('.btn-watch'),
   btnQueue: document.querySelector('.btn-queue'),
+  errorInput: document.querySelector('.error-input'),
 
   arrowLeft: document.querySelector('.arrow-left'),
   dotsLeft: document.querySelector('.dots-left'),

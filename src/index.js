@@ -34,7 +34,7 @@ for (const pageButton in refs.pageButtons) {
   );
 }
 
-refs.list.addEventListener('click', 
+refs.list.addEventListener('click',
   pageChanger.findSpecificMovie.bind(pageChanger),
 );
 
@@ -42,7 +42,7 @@ refs.inputFinder.addEventListener('input', debounce((e) => {
   let query = e.target.value;
   console.log(e.target.value);
   pageChanger.findMovieQuery(query);
-
+  
 
 }, 500));
 

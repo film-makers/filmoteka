@@ -6,6 +6,11 @@ import refs from '../js/refs';
 import templateItem from '../templates/templateItem.hbs';
 import templateMainQuery from '../templates/templateMainQuery.hbs';
 
+import "@pnotify/core/dist/PNotify.css";
+import "@pnotify/core/dist/BrightTheme.css";
+import { alert } from '@pnotify/core';
+
+
 const API_KEY = 'bb0a149304db2d054e912403b986db46';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -99,9 +104,16 @@ export default class {
       refs.main.innerHTML = `${templateItem(data)}`;
     })
 
+      .catch(error => {
+        alert({
+          text: 'Нет премиум-подписки!',
+          delay: 1000,
+        })
+      })
+
     return;
   }
-  
+
   else {
     console.log('нехуй клацать');
   }
@@ -113,10 +125,19 @@ export default class {
       const moviesQuery = axios.get(`/search/movie?api_key=${API_KEY}&query=${query}`);
 
       moviesQuery.then(({data}) => {
-        console.log(data),
+        if(data.total_results !==0 ){
+          console.log(data),
         refs.list.innerHTML = `${templateMainQuery(data.results)}`
-  
+        refs.errorInput.classList.add('is-hidden');
+        }
+        if(data.total_results === 0){
+          refs.errorInput.classList.remove('is-hidden');
+          this.findMovies();
+        }
+
+
       })
+
       return;
     }
     this.findMovies();
