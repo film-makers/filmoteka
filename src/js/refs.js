@@ -10,6 +10,8 @@ export default {
   header: document.querySelector('.site-header'),
   btnHeader: document.querySelector('.buttons-header'),
   inputHeader: document.querySelector('.input-header'),
+  btnHeadWatch: document.querySelector('.btn-clr-wathed'),
+  btnHeadQue: document.querySelector('.btn-clr-queue'),
 
 
   errorInput: document.querySelector('.error-input'),
