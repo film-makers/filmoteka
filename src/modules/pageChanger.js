@@ -10,6 +10,7 @@ import filmCard from '../templates/templateMain.hbs';
 
 import templateItem from '../templates/templateItem.hbs';
 import templateMainQuery from '../templates/templateMainQuery.hbs';
+import localStorage from '../js/localStorage';
 
 const API_KEY = 'bb0a149304db2d054e912403b986db46';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -342,17 +343,25 @@ export default class {
   refs.header.classList.remove('site-home');
   refs.header.classList.add('site-film');
   const id = +e.target.id;
-  // console.log(id);
+
+
 
   if (e.target.nodeName === 'IMG') {
     const movies = axios.get(`/movie/${id}?api_key=${API_KEY}`);
+
+
     movies.then(({data}) => {
-      refs.main.innerHTML = `${templateItem(data)}`
+
+      console.log(data),
+      refs.main.innerHTML = `${templateItem(data)}`;
+        localStorage.setToLocalStorage(data);
     }).catch(error => {
-    alert({
-      text: `Нет содержимого на бэкенде!`,
-      delay: 1000
-    })}).finally(() => refs.spinner.classList.add("is-hidden"))
+      alert({
+        text: `Нет содержимого на бэкенде!`,
+        delay: 1000
+      })}).finally(() => refs.spinner.classList.add("is-hidden"))
+
+
     return;
   } else {
     console.log('нехуй клацать');
@@ -383,5 +392,8 @@ export default class {
     const cards = filmCard(finalResults);
 
     refs.list.insertAdjacentHTML('afterbegin', cards);
-  }
+
+  };
+
 }
+

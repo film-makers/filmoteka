@@ -10,8 +10,7 @@ export default {
   header: document.querySelector('.site-header'),
   btnHeader: document.querySelector('.buttons-header'),
   inputHeader: document.querySelector('.input-header'),
-  btnWatch: document.querySelector('.btn-watch'),
-  btnQueue: document.querySelector('.btn-queue'),
+
 
   errorInput: document.querySelector('.error-input'),
   spinner: document.querySelector('.spinner'),
