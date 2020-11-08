@@ -1,5 +1,11 @@
 import './sass/styles.scss';
 import refs from './js/refs';
+
+import filmCard from './templates/templateMain.hbs';
+import genres from './modules/genres';
+
+import debounce from 'lodash.debounce';
+
 import PageChanger from './modules/pageChanger';
 
 const pageChanger = new PageChanger();
@@ -30,3 +36,32 @@ refs.list.addEventListener(
   'click',
   pageChanger.findSpecificMovie.bind(pageChanger),
 );
+
+refs.inputFinder.addEventListener(
+  'input',
+  debounce(e => {
+    let query = e.target.value;
+    console.log(e.target.value);
+    pageChanger.findMovieQuery(query);
+  }, 500),
+);
+
+refs.siteLogo.addEventListener('click', () => {
+  window.location.reload();
+});
+
+refs.linkLibrary.addEventListener('click', () => {
+  refs.header.classList.remove('site-home');
+  refs.header.classList.remove('site-film');
+  refs.header.classList.add('site-myLibrary');
+  refs.inputHeader.classList.add('is-hidden');
+  refs.btnHeader.classList.remove('is-hidden');
+});
+
+refs.linkHome.addEventListener('click', () => {
+  refs.header.classList.add('site-home');
+  refs.header.classList.remove('site-film');
+  refs.header.classList.remove('site-myLibrary');
+  refs.inputHeader.classList.remove('is-hidden');
+  refs.btnHeader.classList.add('is-hidden');
+});

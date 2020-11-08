@@ -23,9 +23,23 @@
   }
 }
 .site-film {
+  position: relative;
   background-image: url(../images/header-film-320.png);
   background-repeat: no-repeat;
   background-size: cover;
+
+  &::after {
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: 0;
+    position: absolute;
+    background: #000;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+  }
+
   @media (min-width: 768px) {
     background-image: url(../images/header-film-768.png);
   }
@@ -33,6 +47,11 @@
     background-image: url(../images/header-film-1024.png);
   }
 }
+.navigation {
+  position: relative;
+  z-index: 10;
+}
+
 .site-header {
   padding: 45px 0 100px;
 }
@@ -44,7 +63,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 30px;
+  padding-bottom: 50px;
 }
 .h1-nav {
   margin-top: 3px;
@@ -138,6 +157,8 @@
 .buttons-header {
 display: flex;
 justify-content: center;
+position: relative;
+z-index: 10;
 }
 
 .desktop-consultation {
@@ -161,8 +182,9 @@ line-height: 16px;
 }
 .desktop-consultation:hover {
   background-color: #FF6B01;
+  border-color: #FF6B01;
 }
 
 .is-hidden {
-  opacity: 0;
+  display: none;
 }
