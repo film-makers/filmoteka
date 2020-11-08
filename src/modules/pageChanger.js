@@ -75,6 +75,8 @@ export default class {
           : 'No data',
       }));
 
+
+
       const finalResults = mappedResults.map(item => ({
         ...item,
         genre_ids: item.genre_ids
@@ -85,7 +87,7 @@ export default class {
           })
           .join(', '),
       }));
-
+      
       this.updateMarkup(finalResults);
     });
   }

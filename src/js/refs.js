@@ -14,6 +14,7 @@ export default {
   btnWatch: document.querySelector('.btn-watch'),
   btnQueue: document.querySelector('.btn-queue'),
   errorInput: document.querySelector('.error-input'),
+  spinner: document.querySelector('.self-building-square-spinner'),
 
   arrowLeft: document.querySelector('.arrow-left'),
   dotsLeft: document.querySelector('.dots-left'),
