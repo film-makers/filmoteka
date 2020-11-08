@@ -26,3 +26,7 @@ export default {
   dotsRight: document.querySelector('.dots-right'),
   arrowRight: document.querySelector('.arrow-right'),
 };
+
+
+
+///strorage
