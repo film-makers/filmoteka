@@ -1,0 +1,35 @@
+<section class="films">
+      <div class="container">
+        <ul class="films__list">
+
+{{#each this}}
+
+
+<li class="films__item">
+    <img class="films__img" id="{{id}}" src="https://image.tmdb.org/t/p/w500/{{poster_path}}" alt="{{name}}">
+    <p class="films__title">{{original_title}}{{name}}</p>
+    <p class="films__text">{{genre_ids}} | {{first_air_date}}<span class="films__rating">{{vote_average}}</span></p>
+</li>
+
+
+{{/each}}
+
+</ul>
+
+        <!-- Pagination -->
+    <div class="page-buttons">
+      <button class="arrow-left">&#9664;</button>
+      <button class="first-page"></button>
+      <div class="dots-left">...</div>
+      <button class="before-previous-page"></button>
+      <button class="previous-page"></button>
+      <button class="current-page"></button>
+      <button class="next-page"></button>
+      <button class="after-next-page"></button>
+      <div class="dots-right">...</div>
+      <button class="last-page"></button>
+      <button class="arrow-right">&#9654;</button>
+    </div>
+    <!-- End pagination -->
+      </div>
+    </section>

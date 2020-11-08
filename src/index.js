@@ -3,6 +3,7 @@ import refs from './js/refs';
 
 import filmCard from './templates/templateMain.hbs';
 import genres from './modules/genres';
+import templateLibrary from './templates/templateLibrary.hbs';
 
 import debounce from 'lodash.debounce';
 
@@ -57,6 +58,17 @@ refs.linkLibrary.addEventListener('click', () => {
   refs.header.classList.add('site-myLibrary');
   refs.inputHeader.classList.add('is-hidden');
   refs.btnHeader.classList.remove('is-hidden');
+
+  const getLocalStorage = localStorage.getItem('watched');
+  const parsedLocalFilm = JSON.parse(getLocalStorage);
+
+  console.log(parsedLocalFilm);
+
+  refs.main.innerHTML = `${templateLibrary(parsedLocalFilm)}`;
+  const list = document.querySelector('.films__list');
+  list.addEventListener('click',
+  pageChanger.findSpecificMovie.bind(pageChanger),
+);
 });
 
 refs.linkHome.addEventListener('click', () => {
@@ -65,4 +77,7 @@ refs.linkHome.addEventListener('click', () => {
   refs.header.classList.remove('site-myLibrary');
   refs.inputHeader.classList.remove('is-hidden');
   refs.btnHeader.classList.add('is-hidden');
+
+
+
 });

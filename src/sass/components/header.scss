@@ -185,6 +185,12 @@
 .desktop-consultation:not(:last-child) {
   margin-right: 20px;
 }
+
+.active {
+  background-color: #ff6b01;
+  border-color: #ff6b01;
+}
+
 .desktop-consultation:hover {
   background-color: #ff6b01;
   border-color: #ff6b01;

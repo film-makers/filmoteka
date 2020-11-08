@@ -28,13 +28,13 @@ export default {
                 // console.log('Добавляем');
                 if (isFind===null){
                     localStorage.setItem('watched', JSON.stringify(localFilm));
-                    btnWatch.textContent = 'Remove with watched';
+                    btnWatch.textContent = 'Remove from watched';
                     return;
                 }
                 const aaa = [...parsedLocalFilm, data]
                 console.log('aaa', aaa);
                 localStorage.setItem('watched', JSON.stringify(aaa));
-                btnWatch.textContent = 'Remove with watched';
+                btnWatch.textContent = 'Remove from watched';
                 
             }
         })
@@ -45,7 +45,7 @@ export default {
 
         const isFind = parsedLocalFilm && parsedLocalFilm.some(e => e.id === id);
             if (isFind) {
-                btnWatch.textContent = 'Remove with watched';
+                btnWatch.textContent = 'Remove from watched';
             }
             else {
             btnWatch.textContent = 'Add to watched';
