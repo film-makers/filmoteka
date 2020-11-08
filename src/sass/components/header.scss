@@ -1,5 +1,3 @@
-// header
-
 .site-home {
   background-image: url(../images/header-home-320.png);
   background-repeat: no-repeat;
@@ -35,7 +33,7 @@
     z-index: 0;
     position: absolute;
     background: #000;
-    opacity: .5;
+    opacity: 0.5;
     width: 100%;
     height: 100%;
   }
@@ -53,7 +51,7 @@
 }
 
 .site-header {
-  padding: 45px 0 100px;
+  padding: 45px 0 75px;
 }
 // .img-nav {
 //   flex: 1 1 100%;
@@ -63,7 +61,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-end;
-  padding-bottom: 50px;
+  padding-bottom: 30px;
 }
 .h1-nav {
   margin-top: 3px;
@@ -124,13 +122,15 @@
 .input-header {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   position: relative;
-  max-width: 335px;
+  max-width: 450px;
   margin: 0 auto;
+  max-height: 45px;
 }
 
 .input-finder {
-  width: 100%;
+  width: 335px;
   // max-width: 335px;
   height: 20px;
   border: 0;
@@ -150,15 +150,21 @@
   background-image: url(../images/finder-header.png);
   background-repeat: no-repeat;
   // background-color: red;
-  top: 30%;
-  left: 96%;
+  top: 3%;
+  left: 95%;
+  @media (min-width: 1024px) {
+    left: 75%;
+  }
+  @media (min-width: 768px) {
+    left: 85%;
+  }
 }
 
 .buttons-header {
-display: flex;
-justify-content: center;
-position: relative;
-z-index: 10;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 10;
 }
 
 .desktop-consultation {
@@ -170,21 +176,25 @@ z-index: 10;
   border: 2px solid #fff;
   border-radius: 5px;
   font-family: Roboto;
-font-style: normal;
-font-weight: 500;
-font-size: 12px;
-line-height: 16px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 16px;
 }
 
 .desktop-consultation:not(:last-child) {
   margin-right: 20px;
-
 }
 .desktop-consultation:hover {
-  background-color: #FF6B01;
-  border-color: #FF6B01;
+  background-color: #ff6b01;
+  border-color: #ff6b01;
 }
 
 .is-hidden {
   display: none;
+}
+
+.error-input {
+  margin-top: 20px;
+  color: #ff001b;
 }
