@@ -1,0 +1,190 @@
+// header
+
+.site-home {
+  background-image: url(../images/header-home-320.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media (min-width: 768px) {
+    background-image: url(../images/header-home-768.png);
+  }
+  @media (min-width: 1024px) {
+    background-image: url(../images/header-home-1024.png);
+  }
+}
+.site-myLibrary {
+  background-image: url(../images/header-Labry-320.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  @media (min-width: 768px) {
+    background-image: url(../images/header-Labry-768.png);
+  }
+  @media (min-width: 1024px) {
+    background-image: url(../images/header-Labry-1024.png);
+  }
+}
+.site-film {
+  position: relative;
+  background-image: url(../images/header-film-320.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  &::after {
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: 0;
+    position: absolute;
+    background: #000;
+    opacity: .5;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 768px) {
+    background-image: url(../images/header-film-768.png);
+  }
+  @media (min-width: 1024px) {
+    background-image: url(../images/header-film-1024.png);
+  }
+}
+.navigation {
+  position: relative;
+  z-index: 10;
+}
+
+.site-header {
+  padding: 45px 0 100px;
+}
+// .img-nav {
+//   flex: 1 1 100%;
+// }
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-bottom: 50px;
+}
+.h1-nav {
+  margin-top: 3px;
+  font-size: 26px;
+  opacity: 0;
+  @media (min-width: 768px) {
+    opacity: 1;
+  }
+}
+
+.site_logo {
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  text-decoration: none;
+  align-items: center;
+}
+// .site_logo img {
+//   background-repeat: no-repeat;
+// }
+
+.desktop-navigation {
+  display: flex;
+}
+.desktop-site_menu {
+  justify-content: space-around;
+  width: 150px;
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+.desktop-menu_item {
+  list-style-type: none;
+}
+
+.desktop-menu_link {
+  position: relative;
+  text-decoration: none;
+  color: #fff;
+}
+
+.desktop-menu_link:after {
+  display: block;
+  position: absolute;
+  // left: 0;
+  height: 3px;
+  background-color: #ff6b08;
+  content: '';
+  // transition: width 0.3s ease-out;
+}
+
+.desktop-menu_link:hover:after {
+  width: 100%;
+}
+
+.input-header {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  max-width: 335px;
+  margin: 0 auto;
+}
+
+.input-finder {
+  width: 100%;
+  // max-width: 335px;
+  height: 20px;
+  border: 0;
+  border-bottom: 1px solid #fff;
+  background-color: transparent;
+  color: #fff;
+  &::placeholder {
+    color: #fff;
+  }
+}
+
+.input-header:after {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  content: '';
+  background-image: url(../images/finder-header.png);
+  background-repeat: no-repeat;
+  // background-color: red;
+  top: 30%;
+  left: 96%;
+}
+
+.buttons-header {
+display: flex;
+justify-content: center;
+position: relative;
+z-index: 10;
+}
+
+.desktop-consultation {
+  text-transform: uppercase;
+  width: 130px;
+  height: 45px;
+  background-color: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-family: Roboto;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 16px;
+}
+
+.desktop-consultation:not(:last-child) {
+  margin-right: 20px;
+
+}
+.desktop-consultation:hover {
+  background-color: #FF6B01;
+  border-color: #FF6B01;
+}
+
+.is-hidden {
+  display: none;
+}

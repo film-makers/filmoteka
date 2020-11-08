@@ -4,17 +4,93 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
     <title>Webpack Starter Kit</title>
 
-    
+
   </head>
 
   <body>
-    <article class="intro">
-      <h1>Webpack starter kit</h1>
 
-    </article>
-  </body>
+    <header class="site-header site-home">
+      <!-- <header class="site-header site-home site-myLibrary site-film"> -->
+      <div class="container">
+          <div class="navigation">
+            <a href="#" class="site_logo">
+              <img class="img-nav" src="./images/film.png" alt="#" />
+              <h1 class="h1-nav">Filmoteka</h1>
+  
+            </a>
+  
+            <nav class="desktop-navigation">
+              <ul class="desktop-site_menu">
+                <li class="desktop-menu_item">
+                  <a href="#" class="desktop-menu_link link-home">home</a>
+                </li>
+  
+                <li class="desktop-menu_item">
+                  <a href="#" class="desktop-menu_link link-library">my library</a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+          <div class="buttons-header is-hidden">
+            <button href="#registration-form" class="desktop-consultation">
+              wathed
+            </button>
+            <button href="#registration-form" class="desktop-consultation">
+              queue
+            </button>
+          </div>
+          <form class="input-header">
+            <input
+              class="input-finder"
+              type="search"
+              placeholder="Поиск фильмов"
+            />
+          </form>
+        </div>
+      </header>
+
+    <main>
+
+    <section class="films">
+      <div class="container">
+        <ul class="films__list">
+
+        </ul>
+      </div>
+    </section>
+        <!-- Pagination -->
+    <div class="container"></div>
+
+    <div class="page-buttons">
+      <button class="arrow-left">>---</button>
+      <div class="dots">...</div>
+      <button class="before-previous-page"></button>
+      <button class="previous-page"></button>
+      <button class="current-page"></button>
+      <button class="next-page"></button>
+      <button class="after-next-page"></button>
+      <div class="dots">...</div>
+      <button class="arrow-right">---></button>
+    </div>
+    <!-- End pagination -->
+
+      </main>
+      
+    <!-- начало футера -->
+    <footer class="footer">
+      <div class="container">
+        <span class="footer__text">© 2020 | All Rights Reserved | Developed with </span>
+        <img class="footer__link" src="./images/footer-svg.svg" alt="heart">
+        <span>by</span>
+        <a class="footer__link" href="#">GoIT Students</a>
+      </div>
+    </footer>
+
+
 </html>
