@@ -92,10 +92,10 @@ export default {
 
             const isFindQue = parsedLocalQueue && parsedLocalQueue.some(e => e.id === id);
             if (isFindQue) {
-                btnQueue.textContent = 'Remove watched';
+                btnQueue.textContent = 'Remove queue';
             }
             else {
-            btnQueue.textContent = 'Add to watched';
+            btnQueue.textContent = 'Add to queue';
             }    
     },
 
