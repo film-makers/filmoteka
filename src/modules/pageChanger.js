@@ -13,6 +13,8 @@ import templateMainQuery from '../templates/templateMainQuery.hbs';
 import localStorage from '../js/localStorage';
 import templateLibrary from '../templates/templateLibrary.hbs';
 
+
+
 const API_KEY = 'bb0a149304db2d054e912403b986db46';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
 
@@ -66,7 +68,7 @@ export default class {
     this.updateButtons(this.maxPage);
   }
 
-  
+
 
   updateButtons(lastPage) {
     refs.pageButtons.bpPage.innerHTML = this.page - 2;
@@ -309,7 +311,7 @@ export default class {
   findMovies() {
     refs.spinner.classList.remove("is-hidden")
     let lastPage;
-    
+
     const movies = axios.get(
       `/trending/movies/week?api_key=${this.key}&page=${this.page}`,
     );
@@ -329,6 +331,8 @@ export default class {
           ? item.first_air_date.slice(0, 4)
           : 'No data',
       }));
+
+
 
       const finalResults = mappedResults.map(item => ({
         ...item,
@@ -351,7 +355,7 @@ export default class {
   findMoviesHome() {
     refs.spinner.classList.remove("is-hidden")
     let lastPage;
-    
+
     const movies = axios.get(
       `/trending/movies/week?api_key=${this.key}&page=${this.page}`,
     );
@@ -371,6 +375,7 @@ export default class {
           ? item.first_air_date.slice(0, 4)
           : 'No data',
       }));
+
 
       const finalResults = mappedResults.map(item => ({
         ...item,
@@ -392,22 +397,22 @@ export default class {
   findWatchedMovies(array) {
     refs.spinner.classLirst.remove("is-hidden")
     let lastPage;
-    
+
       this.updateExtremeButtonsText(1, array.length);
       this.maxPage = array.length / 20;
       lastPage = this.maxPage;
       return lastPage;
     };
-  
+
 
   findSpecificMovie(e) {
     refs.inputHeader.classList.add('is-hidden');
     refs.header.classList.remove('site-home');
     refs.header.classList.add('site-film');
     const id = +e.target.id;
-    
-    
-    
+
+
+
     if (e.target.nodeName === 'IMG') {
       const pageNumber = +refs.pageButtons.currentPage.textContent;
       this.page = pageNumber;
@@ -416,6 +421,7 @@ export default class {
       refs.linkHome.addEventListener('click', () => {
         this.findMoviesHome();
       })
+
 
       refs.spinner.classList.remove("is-hidden")
     const movies = axios.get(`/movie/${id}?api_key=${API_KEY}`);
@@ -433,8 +439,16 @@ export default class {
       })}).finally(() => refs.spinner.classList.add("is-hidden"))
 
 
+      .catch(error => {
+        alert({
+          text: 'Нет премиум-подписки!',
+          delay: 1000,
+        })
+      })
+
     return;
-  } else {
+  } else
+   {
     console.log('нехуй клацать');
   }
   }
@@ -445,6 +459,7 @@ export default class {
       const moviesQuery = axios.get(`/search/movie?api_key=${API_KEY}&query=${query}`);
 
       moviesQuery.then(({data}) => {
+
         if(data.total_results !== 0) {
           refs.list.innerHTML = `${templateMainQuery(data.results)}`
           refs.errorInput.classList.add("is-hidden")
@@ -487,7 +502,7 @@ export default class {
     refs.dotsLeft = document.querySelector('.dots-left');
     refs.arrowRight = document.querySelector('.arrow-right');
 
-    
+
 
     this.updateButtons(1000);
     this.updateExtremeButtonsText(1, 1000);
@@ -496,19 +511,19 @@ export default class {
       'click',
       this.onArrowRightClick.bind(this),
     );
-    
+
     refs.arrowLeft.addEventListener(
       'click',
       this.onArrowLeftClick.bind(this),
     );
-    
+
     for (const pageButton in refs.pageButtons) {
       refs.pageButtons[pageButton].addEventListener(
         'click',
         this.onPageButtonsClickHome.bind(this),
       );
     }
-    
+
   }
 
 }

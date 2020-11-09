@@ -3,11 +3,14 @@ import refs from './js/refs';
 
 import filmCard from './templates/templateMain.hbs';
 import genres from './modules/genres';
-import templateLibrary from './templates/templateLibrary.hbs';
 
+import teamdata from './js/team';
+
+import templateLibrary from './templates/templateLibrary.hbs';
 import debounce from 'lodash.debounce';
 
 import PageChanger from './modules/pageChanger';
+import team from './templates/team.hbs'
 
 const pageChanger = new PageChanger();
 
@@ -64,7 +67,7 @@ refs.linkLibrary.addEventListener('click', () => {
 
   const getLocalStorage = localStorage.getItem('watched');
   const parsedLocalFilm = JSON.parse(getLocalStorage);
-  
+
 
 
   refs.main.innerHTML = `${templateLibrary(parsedLocalFilm)}`;
@@ -81,6 +84,13 @@ refs.linkHome.addEventListener('click', () => {
   refs.inputHeader.classList.remove('is-hidden');
   refs.btnHeader.classList.add('is-hidden');
 });
+
+
+refs.teamList.addEventListener('click', ()=> {
+  refs.menuLinks.classList.add('is-hidden');
+  refs.inputHeader.classList.add('is-hidden');
+  refs.main.innerHTML = `${team(teamdata)}`;
+})
 
 refs.btnHeadQue.addEventListener('click', () => {
   refs.btnHeadWatch.classList.remove('active');
@@ -110,3 +120,4 @@ refs.btnHeadWatch.addEventListener('click', () => {
   pageChanger.findSpecificMovie.bind(pageChanger),
 );
 })
+

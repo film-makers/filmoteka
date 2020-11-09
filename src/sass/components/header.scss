@@ -1,3 +1,4 @@
+
 .site-home {
   background-image: url(../images/header-home-320.png);
   background-repeat: no-repeat;
@@ -208,10 +209,10 @@
 }
 
 .is-hidden {
-  display: none;
+  display: none !important;
 }
-
 .error-input {
   margin-top: 20px;
   color: #ff001b;
 }
+
