@@ -121,3 +121,10 @@ refs.btnHeadWatch.addEventListener('click', () => {
 );
 })
 
+
+refs.backToTop.addEventListener('click', () => {
+  scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+})

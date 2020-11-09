@@ -39,7 +39,13 @@
   cursor: pointer;
   width: 280px;
   min-height: 435px;
+  transition: all .2s linear;
+
+  &:hover {
+    filter: sepia(90%);
+  }
 }
+
 .films__title {
   padding-top: 10px;
   padding-bottom: 2px;
@@ -89,4 +95,29 @@
   color: #545454;
   font-family: 'Roboto';
   font-weight: 400;
+}
+
+
+.back-to-top {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 45px;
+  height: 45px;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: pointer;
+  background-image: url('../images/back2top.svg');
+  background-position: center center;
+  background-size: 50%;
+  background-repeat: no-repeat;
+  box-shadow: 2px 2px 7px rgba(0,0,0, .25);
+  opacity: .65;
+  transition: all .3s ease;
+
+  &:hover {
+    opacity: 1;
+    box-shadow: 2px 2px 7px 4px rgba(0,0,0, .25);
+  }
 }

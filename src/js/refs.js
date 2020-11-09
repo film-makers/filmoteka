@@ -37,4 +37,5 @@ export default {
   dotsRight: document.querySelector('.dots-right'),
   dotsLeft: document.querySelector('.dots-left'),
   arrowRight: document.querySelector('.arrow-right'),
+  backToTop: document.querySelector('.back-to-top')
 };
