@@ -10,11 +10,16 @@ export default {
   header: document.querySelector('.site-header'),
   btnHeader: document.querySelector('.buttons-header'),
   inputHeader: document.querySelector('.input-header'),
+
   btnWatch: document.querySelector('.btn-watch'),
   btnQueue: document.querySelector('.btn-queue'),
   errorInput: document.querySelector('.error-input'),
   spinner: document.querySelector('.self-building-square-spinner'),
   teamList: document.querySelector('.footer__link-a'),
+
+  btnHeadWatch: document.querySelector('.btn-clr-wathed'),
+  btnHeadQue: document.querySelector('.btn-clr-queue'),
+
   errorInput: document.querySelector('.error-input'),
   spinner: document.querySelector('.spinner'),
   menuLinks: document.querySelector('.desktop-navigation'),
