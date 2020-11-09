@@ -137,8 +137,19 @@
   border-bottom: 1px solid #fff;
   background-color: transparent;
   color: #fff;
+  transition: border-color .2s linear;
+
   &::placeholder {
     color: #fff;
+  }
+
+  &:focus {
+    border-color: $main-color;
+    outline: none;
+  }
+  
+  &:hover {
+    outline: none;
   }
 }
 
