@@ -17,7 +17,8 @@ export default {
   teamList: document.querySelector('.footer__link-a'),
   errorInput: document.querySelector('.error-input'),
   spinner: document.querySelector('.spinner'),
-  
+  menuLinks: document.querySelector('.desktop-navigation'),
+
   arrowLeft: document.querySelector('.arrow-left'),
   pageButtons: {
     fpButton: document.querySelector('.first-page'),

@@ -68,9 +68,8 @@ refs.linkHome.addEventListener('click', () => {
   refs.btnHeader.classList.add('is-hidden');
 });
 
-refs.teamList.addEventListener('click', ()=>{
-  refs.list.innerHTML = `${team(teamdata)}`;
-  const f = document.querySelector('.page-buttons');
-  f.classList.add('is-hidden');
+refs.teamList.addEventListener('click', ()=> {
+  refs.menuLinks.classList.add('is-hidden');
   refs.inputHeader.classList.add('is-hidden');
+  refs.main.innerHTML = `${team(teamdata)}`;
 })
