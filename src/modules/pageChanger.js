@@ -493,12 +493,7 @@ export default class {
 
 
     refs.main.innerHTML = `${templateLibrary(finalResults)}`;
-    console.log(finalResults);
 
-    const list = document.querySelector('.films__list');
-    list.addEventListener('click',
-    this.findSpecificMovie.bind(this),
-  );
 
     refs.arrowLeft = document.querySelector('.arrow-left');
     refs.pageButtons.fpButton = document.querySelector('.first-page');
