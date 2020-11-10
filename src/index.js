@@ -128,3 +128,14 @@ refs.backToTop.addEventListener('click', () => {
     behavior: 'smooth'
   })
 })
+
+window.addEventListener('scroll', () => {
+  const scrollTop = document.documentElement.scrollTop;
+  
+  if (scrollTop > 200) {
+    refs.backToTop.classList.remove('is-hidden')
+  }
+  else {
+    refs.backToTop.classList.add('is-hidden')
+  }
+})
