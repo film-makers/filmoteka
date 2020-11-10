@@ -11,6 +11,9 @@ import filmCard from '../templates/templateMain.hbs';
 import templateItem from '../templates/templateItem.hbs';
 import templateMainQuery from '../templates/templateMainQuery.hbs';
 import localStorage from '../js/localStorage';
+import templateLibrary from '../templates/templateLibrary.hbs';
+
+
 
 const API_KEY = 'bb0a149304db2d054e912403b986db46';
 axios.defaults.baseURL = 'https://api.themoviedb.org/3';
@@ -58,6 +61,14 @@ export default class {
     this.findMovies();
     this.updateButtons(this.maxPage);
   }
+
+  onPageButtonsClickHome(event) {
+    this.page = Number(event.target.textContent);
+    this.findMoviesHome();
+    this.updateButtons(this.maxPage);
+  }
+
+
 
   updateButtons(lastPage) {
     refs.pageButtons.bpPage.innerHTML = this.page - 2;
@@ -305,6 +316,7 @@ export default class {
       `/trending/movies/week?api_key=${this.key}&page=${this.page}`,
     );
 
+
     const lastPageFinder = movies.then(({ data }) => {
       this.updateExtremeButtonsText(1, data.total_pages);
       this.maxPage = data.total_pages;
@@ -319,6 +331,8 @@ export default class {
           ? item.first_air_date.slice(0, 4)
           : 'No data',
       }));
+
+
 
       const finalResults = mappedResults.map(item => ({
         ...item,
@@ -335,7 +349,61 @@ export default class {
     }).finally(() => refs.spinner.classList.add("is-hidden"))
 
     return lastPageFinder;
+  };
+
+
+  findMoviesHome() {
+    refs.spinner.classList.remove("is-hidden")
+    let lastPage;
+
+    const movies = axios.get(
+      `/trending/movies/week?api_key=${this.key}&page=${this.page}`,
+    );
+
+
+    const lastPageFinder = movies.then(({ data }) => {
+      this.updateExtremeButtonsText(1, data.total_pages);
+      this.maxPage = data.total_pages;
+      lastPage = this.maxPage;
+      return lastPage;
+    });
+
+    movies.then(({ data: { results } }) => {
+      const mappedResults = results.map(item => ({
+        ...item,
+        first_air_date: item.first_air_date
+          ? item.first_air_date.slice(0, 4)
+          : 'No data',
+      }));
+
+
+      const finalResults = mappedResults.map(item => ({
+        ...item,
+        genre_ids: item.genre_ids
+          .map(number => {
+            const genre = genres.find(genre => genre.id === number);
+
+            return genre?.name;
+          })
+          .join(', '),
+      }));
+
+      this.updateMarkupHome(finalResults);
+    }).finally(() => refs.spinner.classList.add("is-hidden"))
+
+    return lastPageFinder;
   }
+
+  findWatchedMovies(array) {
+    refs.spinner.classLirst.remove("is-hidden")
+    let lastPage;
+
+      this.updateExtremeButtonsText(1, array.length);
+      this.maxPage = array.length / 20;
+      lastPage = this.maxPage;
+      return lastPage;
+    };
+
 
   findSpecificMovie(e) {
     refs.inputHeader.classList.add('is-hidden');
@@ -343,9 +411,14 @@ export default class {
     refs.header.classList.add('site-film');
     const id = +e.target.id;
 
-
-
     if (e.target.nodeName === 'IMG') {
+      const pageNumber = +refs.pageButtons.currentPage.textContent;
+      this.page = pageNumber;
+      console.log(pageNumber);
+
+      refs.linkHome.addEventListener('click', () => {
+        this.findMoviesHome();
+      })
       refs.spinner.classList.remove("is-hidden")
     const movies = axios.get(`/movie/${id}?api_key=${API_KEY}`);
 
@@ -362,8 +435,16 @@ export default class {
       })}).finally(() => refs.spinner.classList.add("is-hidden"))
 
 
+      .catch(error => {
+        alert({
+          text: 'Нет премиум-подписки!',
+          delay: 1000,
+        })
+      })
+
     return;
-  } else {
+  } else
+   {
     console.log('нехуй клацать');
   }
   }
@@ -374,6 +455,7 @@ export default class {
       const moviesQuery = axios.get(`/search/movie?api_key=${API_KEY}&query=${query}`);
 
       moviesQuery.then(({data}) => {
+
         if(data.total_results !== 0) {
           refs.list.innerHTML = `${templateMainQuery(data.results)}`
           refs.errorInput.classList.add("is-hidden")
@@ -394,6 +476,51 @@ export default class {
     refs.list.insertAdjacentHTML('afterbegin', cards);
 
   };
+
+
+  updateMarkupHome(finalResults) {
+    const cards = filmCard(finalResults);
+
+
+    refs.main.innerHTML = `${templateLibrary(finalResults)}`;
+    console.log(finalResults);
+
+    refs.arrowLeft = document.querySelector('.arrow-left');
+    refs.pageButtons.fpButton = document.querySelector('.first-page');
+    refs.pageButtons.bpPage = document.querySelector('.before-previous-page');
+    refs.pageButtons.pPage = document.querySelector('.previous-page');
+    refs.pageButtons.currentPage = document.querySelector('.current-page');
+    refs.pageButtons.nPage = document.querySelector('.next-page');
+    refs.pageButtons.anPage = document.querySelector('.after-next-page');
+    refs.pageButtons.lpButton = document.querySelector('.last-page');
+
+    refs.dotsRight = document.querySelector('.dots-right');
+    refs.dotsLeft = document.querySelector('.dots-left');
+    refs.arrowRight = document.querySelector('.arrow-right');
+
+
+
+    this.updateButtons(1000);
+    this.updateExtremeButtonsText(1, 1000);
+
+    refs.arrowRight.addEventListener(
+      'click',
+      this.onArrowRightClick.bind(this),
+    );
+
+    refs.arrowLeft.addEventListener(
+      'click',
+      this.onArrowLeftClick.bind(this),
+    );
+
+    for (const pageButton in refs.pageButtons) {
+      refs.pageButtons[pageButton].addEventListener(
+        'click',
+        this.onPageButtonsClickHome.bind(this),
+      );
+    }
+
+  }
 
 }
 

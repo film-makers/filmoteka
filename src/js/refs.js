@@ -11,9 +11,18 @@ export default {
   btnHeader: document.querySelector('.buttons-header'),
   inputHeader: document.querySelector('.input-header'),
 
+  btnWatch: document.querySelector('.btn-watch'),
+  btnQueue: document.querySelector('.btn-queue'),
+  errorInput: document.querySelector('.error-input'),
+  spinner: document.querySelector('.self-building-square-spinner'),
+  teamList: document.querySelector('.footer__link-a'),
+
+  btnHeadWatch: document.querySelector('.btn-clr-wathed'),
+  btnHeadQue: document.querySelector('.btn-clr-queue'),
 
   errorInput: document.querySelector('.error-input'),
   spinner: document.querySelector('.spinner'),
+  menuLinks: document.querySelector('.desktop-navigation'),
 
   arrowLeft: document.querySelector('.arrow-left'),
   pageButtons: {
@@ -28,4 +37,6 @@ export default {
   dotsRight: document.querySelector('.dots-right'),
   dotsLeft: document.querySelector('.dots-left'),
   arrowRight: document.querySelector('.arrow-right'),
+  backToTop: document.querySelector('.back-to-top'),
+  progressLine: document.querySelector('.progress-line')
 };

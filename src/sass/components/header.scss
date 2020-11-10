@@ -1,3 +1,4 @@
+
 .site-home {
   background-image: url(../images/header-home-320.png);
   background-repeat: no-repeat;
@@ -67,6 +68,8 @@
   margin-top: 3px;
   font-size: 26px;
   opacity: 0;
+  font-weight: 500;
+  margin-left: 10px;
   @media (min-width: 768px) {
     opacity: 1;
   }
@@ -137,8 +140,19 @@
   border-bottom: 1px solid #fff;
   background-color: transparent;
   color: #fff;
+  transition: border-color .2s linear;
+
   &::placeholder {
     color: #fff;
+  }
+
+  &:focus {
+    border-color: $main-color;
+    outline: none;
+  }
+  
+  &:hover {
+    outline: none;
   }
 }
 
@@ -185,16 +199,22 @@
 .desktop-consultation:not(:last-child) {
   margin-right: 20px;
 }
+
+.active {
+  background-color: #ff6b01;
+  border-color: #ff6b01;
+}
+
 .desktop-consultation:hover {
   background-color: #ff6b01;
   border-color: #ff6b01;
 }
 
 .is-hidden {
-  display: none;
+  display: none !important;
 }
-
 .error-input {
   margin-top: 20px;
   color: #ff001b;
 }
+

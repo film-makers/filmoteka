@@ -30,3 +30,16 @@ body {
     max-width: 882px;
   }
 }
+
+$main-color: #FF6B01;
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #bdbdbd;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: $main-color;
+  border-radius: 2px;
+}
