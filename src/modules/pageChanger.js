@@ -391,6 +391,8 @@ export default class {
       this.updateMarkupHome(finalResults);
     }).finally(() => refs.spinner.classList.add("is-hidden"))
 
+
+
     return lastPageFinder;
   }
 
@@ -455,7 +457,7 @@ export default class {
 
   findMovieQuery(query) {
     if (query !== '') {
-      refs.spinner.classList.remove("is-hidden")
+      refs.spinner.classList.remove("is-hidden");
       const moviesQuery = axios.get(`/search/movie?api_key=${API_KEY}&query=${query}`);
 
       moviesQuery.then(({data}) => {
@@ -465,12 +467,16 @@ export default class {
           refs.errorInput.classList.add("is-hidden")
         }
         if(data.total_results === 0) {
-          refs.errorInput.classList.remove("is-hidden")
+          refs.errorInput.classList.remove("is-hidden");
           this.findMovies();
         }
       }).finally(() => refs.spinner.classList.add("is-hidden"))
       return;
     }
+    else if (query === '') {
+      refs.list.innerHTML = '';
+    }
+
     this.findMovies();
   }
 
@@ -488,6 +494,11 @@ export default class {
 
     refs.main.innerHTML = `${templateLibrary(finalResults)}`;
     console.log(finalResults);
+
+    const list = document.querySelector('.films__list');
+    list.addEventListener('click',
+    this.findSpecificMovie.bind(this),
+  );
 
     refs.arrowLeft = document.querySelector('.arrow-left');
     refs.pageButtons.fpButton = document.querySelector('.first-page');

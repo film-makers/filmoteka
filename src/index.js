@@ -83,6 +83,7 @@ refs.linkHome.addEventListener('click', () => {
   refs.header.classList.remove('site-myLibrary');
   refs.inputHeader.classList.remove('is-hidden');
   refs.btnHeader.classList.add('is-hidden');
+  
 });
 
 
