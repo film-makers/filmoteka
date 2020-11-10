@@ -28,5 +28,4 @@ export default {
   dotsRight: document.querySelector('.dots-right'),
   dotsLeft: document.querySelector('.dots-left'),
   arrowRight: document.querySelector('.arrow-right'),
-  team: document.querySelector('.footer__link1'),
 };

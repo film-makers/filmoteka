@@ -3,8 +3,6 @@ import refs from './js/refs';
 
 import filmCard from './templates/templateMain.hbs';
 import genres from './modules/genres';
-import teamInfo from './js/team';
-import teamHBS from './templates/team.hbs';
 import debounce from 'lodash.debounce';
 
 import PageChanger from './modules/pageChanger';
@@ -67,14 +65,4 @@ refs.linkHome.addEventListener('click', () => {
   refs.inputHeader.classList.remove('is-hidden');
   refs.btnHeader.classList.add('is-hidden');
 });
-
-refs.team.addEventListener("mouseover", () => {
-  const a = teamHBS(teamInfo);
-  console.log("te");
-  refs.list.innerHTML = `${a}`;
-});
-
-// refs.team.addEventListener("click", () => {
-//   console.log("12123");
-// })
 
