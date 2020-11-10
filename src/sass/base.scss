@@ -31,6 +31,8 @@ body {
   }
 }
 
+$main-color: #FF6B01;
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -38,6 +40,6 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #ff6b08;
+  background-color: $main-color;
   border-radius: 2px;
 }
