@@ -22,23 +22,19 @@ export default {
             const parsedLocalFilm = JSON.parse(getLocalStorage);
     
             const isFind = parsedLocalFilm && parsedLocalFilm.some(e => e.id === id);
-            console.log('isFind',isFind);
 
             if (isFind) {
-                // console.log('Удаляем');
                 const checkInLocalStorage = parsedLocalFilm.filter(e => e.id !== id);
                 localStorage.setItem('queue', JSON.stringify(checkInLocalStorage));
                 btnQueue.textContent = 'Add to queue';
             }
             else {
-                // console.log('Добавляем');
                 if (isFind===null){
                     localStorage.setItem('queue', JSON.stringify(localQueue));
                     btnQueue.textContent = 'Remove queue';
                     return;
                 }
                 const aaa = [...parsedLocalFilm, data]
-                console.log('aaa', aaa);
                 localStorage.setItem('queue', JSON.stringify(aaa));
                 btnQueue.textContent = 'Remove queue';
             }
@@ -50,23 +46,19 @@ export default {
             const parsedLocalFilm = JSON.parse(getLocalStorage);
     
             const isFind = parsedLocalFilm && parsedLocalFilm.some(e => e.id === id);
-            console.log('isFind',isFind);
 
             if (isFind) {
-                // console.log('Удаляем');
                 const checkInLocalStorage = parsedLocalFilm.filter(e => e.id !== id);
                 localStorage.setItem('watched', JSON.stringify(checkInLocalStorage));
                 btnWatch.textContent = 'Add to watched';
             }
             else {
-                // console.log('Добавляем');
                 if (isFind===null){
                     localStorage.setItem('watched', JSON.stringify(localFilm));
                     btnWatch.textContent = 'Remove watched';
                     return;
                 }
                 const aaa = [...parsedLocalFilm, data]
-                console.log('aaa', aaa);
                 localStorage.setItem('watched', JSON.stringify(aaa));
                 btnWatch.textContent = 'Remove watched';
                 

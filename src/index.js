@@ -15,7 +15,6 @@ import team from './templates/team.hbs'
 const pageChanger = new PageChanger();
 
 pageChanger.findMovies().then(maxPage => {
-  console.log(maxPage);
   pageChanger.updateButtons(maxPage);
 });
 

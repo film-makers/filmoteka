@@ -45,27 +45,27 @@ export default class {
     this.clearPage();
     this.incrementPage();
     this.findMovies();
-    this.updateButtons(this.maxPage);
+    this.maxPage ?? this.updateButtons(this.maxPage);
   }
 
   onArrowLeftClick() {
     this.clearPage();
     this.decrementPage();
     this.findMovies();
-    this.updateButtons(this.maxPage);
+    this.maxPage ?? this.updateButtons(this.maxPage);
   }
 
   onPageButtonsClick(event) {
     this.clearPage();
     this.page = Number(event.target.textContent);
     this.findMovies();
-    this.updateButtons(this.maxPage);
+    this.maxPage ?? this.updateButtons(this.maxPage);
   }
 
   onPageButtonsClickHome(event) {
     this.page = Number(event.target.textContent);
     this.findMoviesHome();
-    this.updateButtons(this.maxPage);
+    this.maxPage ?? this.updateButtons(this.maxPage);
   }
 
 
@@ -418,7 +418,6 @@ export default class {
     if (e.target.nodeName === 'IMG') {
       const pageNumber = +refs.pageButtons.currentPage.textContent;
       this.page = pageNumber;
-      console.log(pageNumber);
 
       refs.linkHome.addEventListener('click', () => {
         this.findMoviesHome();
@@ -430,8 +429,6 @@ export default class {
 
 
     movies.then(({data}) => {
-
-      console.log(data),
       refs.main.innerHTML = `${templateItem(data)}`;
         localStorage.setToLocalStorage(data);
     }).catch(error => {
@@ -451,7 +448,7 @@ export default class {
     return;
   } else
    {
-    console.log('нехуй клацать');
+    console.log('нечего клацать');
   }
   }
 
